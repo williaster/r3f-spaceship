@@ -5,3 +5,45 @@
 .main ul {
   margin-left: 4px;
 }
+
+.main ul ul {
+  margin-bottom: 8px;
+}
+
+.main a {
+  color: #0070f3;
+}
+
+.main a:hover,
+.main a:focus,
+.main a:active {
+  text-decoration: underline;
+}
+
+.demo {
+  width: 100%;
+  min-height: calc(100vh - 300px);
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  column-gap: 16px;
+}
+
+.code {
+  width: 50%;
+  overflow: auto;
+}
+
+.code pre {
+  margin: 0;
+  border: 1px solid #ccc;
+}
+
+.scene {
+  width: 50%;
+  flex-grow: 1;
+}
+
+.scene canvas {
+  min-height: calc(100vh - 300px);
+}

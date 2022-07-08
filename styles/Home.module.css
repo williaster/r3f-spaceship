@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .main a {
@@ -21,6 +21,16 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+}
+
+.main a:not(.card) {
+  color: #0070f3;
+}
+
+.main a:hover,
+.main a:focus,
+.main a:active {
+  text-decoration: underline;
 }
 
 .main a:hover,
@@ -49,7 +59,13 @@
     Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
-.grid {
+.row {
+  display: flex;
+  column-gap: 6rem;
+  flex-wrap: wrap;
+}
+
+.column {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,15 +74,15 @@
 }
 
 .card {
-  margin-bottom: 0rem;
+  margin-bottom: 1rem;
   padding: 1.5rem;
   text-align: left;
   color: inherit;
   text-decoration: none;
   border: 1px solid #eaeaea;
   border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+  transition: color 0.25s ease, border-color 0.15s ease;
+  width: 300px;
 }
 
 .card:hover,
@@ -78,6 +94,10 @@
 
 .card h2 {
   margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+}
+.column h2 {
+  margin: 0;
   font-size: 1.5rem;
 }
 
@@ -93,7 +113,7 @@
 }
 
 @media (max-width: 600px) {
-  .grid {
+  .column {
     width: 100%;
     flex-direction: column;
   }
