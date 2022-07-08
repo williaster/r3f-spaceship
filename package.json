@@ -1,0 +1,36 @@
+{
+  "name": "r3f-spaceship",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && next export",
+    "start": "next start",
+    "lint": "next lint",
+    "preview": "yarn build && cd ./out && npx serve",
+    "deploy": "rm -rf out && yarn build && cd out && touch .nojekyll && git init && git add . && git commit -m \"Deploy commit\" && git remote add origin git@github.com:williaster/r3f-spaceship.git && git push -f origin main:gh-pages"
+  },
+  "author": "Christopher Card Williams <williaster@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@react-three/drei": "^9.17.0",
+    "@react-three/fiber": "^8.0.27",
+    "@react-three/postprocessing": "^2.4.6",
+    "leva": "^0.9.29",
+    "next": "12.2.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "three": "^0.142.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.0.3",
+    "@types/react": "18.0.15",
+    "@types/react-dom": "18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "eslint": "8.19.0",
+    "eslint-config-next": "12.2.1",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.7.1",
+    "typescript": "4.7.4"
+  }
+}
