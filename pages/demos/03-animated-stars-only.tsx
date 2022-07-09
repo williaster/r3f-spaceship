@@ -6,10 +6,10 @@ import { useControls } from 'leva';
 const Stars = ({ speed = 1 }) => {
   // tuning variables
   const { starCount, starColor, starSpread, wrapDistance } = useControls({
-    starColor: '#dec068',
-    starCount: { value: 100, min: 0, max: 1000, step: 1 },
-    starSpread: { value: 20, min: 1, max: 100, step: 1 },
-    wrapDistance: { value: 50, min: 20, max: 100, step: 1 },
+    starColor: '#de6363',
+    starCount: { value: 400, min: 0, max: 1000, step: 1 },
+    starSpread: { value: 30, min: 1, max: 100, step: 1 },
+    wrapDistance: { value: 70, min: 20, max: 100, step: 1 },
   });
 
   const meshRef = useRef<THREE.InstancedMesh>();
@@ -68,6 +68,7 @@ const Stars = ({ speed = 1 }) => {
       <meshPhongMaterial
         color={starColor}
         side={THREE.DoubleSide} // solid on both sides
+        depthWrite={false}
       />
     </instancedMesh>
   );

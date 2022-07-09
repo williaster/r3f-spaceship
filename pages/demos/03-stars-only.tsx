@@ -58,6 +58,7 @@ const Stars = () => {
       <meshPhongMaterial
         color={starColor}
         side={THREE.DoubleSide} // solid on both sides
+        depthWrite={false}
       />
     </instancedMesh>
   );

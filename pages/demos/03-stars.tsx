@@ -1,9 +1,8 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, useHelper } from '@react-three/drei';
-import * as THREE from 'three';
+import { OrbitControls } from '@react-three/drei';
 import { Leva, useControls } from 'leva';
-import AnimatedStars from './03-animated-stars-only';
+import Stars from './03-stars-only';
 
 const Demo = () => (
   <>
@@ -15,9 +14,8 @@ const Demo = () => (
 );
 
 const Scene = () => {
-  const { background, speed } = useControls({
+  const { background } = useControls({
     background: '#b483b4',
-    speed: { value: 0, min: 0, max: 200 },
   });
 
   return (
@@ -26,7 +24,7 @@ const Scene = () => {
       <OrbitControls />
       <ambientLight intensity={0.5} />
       <Rocket />
-      <AnimatedStars speed={speed} />
+      <Stars />
     </>
   );
 };

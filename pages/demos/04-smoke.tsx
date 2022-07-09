@@ -1,22 +1,23 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, useHelper } from '@react-three/drei';
-import * as THREE from 'three';
+import { OrbitControls } from '@react-three/drei';
 import { Leva, useControls } from 'leva';
-import Stars from './03-stars-only';
+import AnimatedStars from './03-animated-stars-only';
+import RocketSmoke from './04-smoke-only';
 
-const Demo = () => (
+const Demo = ({ showControls = true }) => (
   <>
-    <Canvas>
+    <Canvas camera={{ position: [0, 0, -15] }}>
       <Scene />
     </Canvas>
-    <Leva titleBar={false} />
+    <Leva hidden={!showControls} titleBar={false} />
   </>
 );
 
 const Scene = () => {
-  const { background } = useControls({
-    background: '#b483b4',
+  const { background, speed } = useControls({
+    background: '#2a2f76',
+    speed: { value: 30, min: 0, max: 200 },
   });
 
   return (
@@ -25,7 +26,8 @@ const Scene = () => {
       <OrbitControls />
       <ambientLight intensity={0.5} />
       <Rocket />
-      <Stars />
+      <RocketSmoke speed={speed} />
+      <AnimatedStars speed={speed} />
     </>
   );
 };

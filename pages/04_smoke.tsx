@@ -5,21 +5,19 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { githubGist as syntaxStyle } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
 import styles from '../styles/r3f.module.css';
-import Stars from './demos/03-stars';
-import AnimatedStars from './demos/03-animated-stars';
+import Smoke from './demos/04-smoke';
 
-import AnimatedStarsSource from '!!raw-loader!./demos/03-animated-stars';
-import StarsOnlySource from '!!raw-loader!./demos/03-stars-only';
-import AnimatedStarsOnlySource from '!!raw-loader!./demos/03-animated-stars-only';
+import SmokeSource from '!!raw-loader!./demos/04-smoke';
+import SmokeOnlySource from '!!raw-loader!./demos/04-smoke-only';
 
 const sceneLookup = {
-  stars: [Stars, StarsOnlySource],
-  animated: [AnimatedStars, AnimatedStarsOnlySource],
-  full: [AnimatedStars, AnimatedStarsSource],
+  smoke: [Smoke, SmokeOnlySource],
+  polish: [Smoke, SmokeOnlySource],
+  full: [Smoke, SmokeSource],
 } as const;
 
 const ThreeDConcepts: NextPage = () => {
-  const [scene, setScene] = useState<keyof typeof sceneLookup>('stars');
+  const [scene, setScene] = useState<keyof typeof sceneLookup>('smoke');
   const [Scene, Source] = sceneLookup[scene] ?? [];
 
   return (
@@ -29,23 +27,19 @@ const ThreeDConcepts: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <h3>Adding stars to our scene 💫</h3>
+        <h3>Adding smoke to our rocket 💨</h3>
         <form onChange={(e) => setScene(e.target.value)}>
           <label>
-            <input type="radio" value="stars" checked={scene === 'stars'} />{' '}
-            Stars
+            <input type="radio" value="stars" checked={scene === 'smoke'} />{' '}
+            Smoke
           </label>
           <label>
-            <input
-              type="radio"
-              value="animated"
-              checked={scene === 'animated'}
-            />{' '}
-            Animated stars
+            <input type="radio" value="animated" checked={scene === 'polish'} />{' '}
+            Post processing polish
           </label>
           <label>
             <input type="radio" value="full" checked={scene === 'full'} />
-            Stars (full source)
+            Final (full source)
           </label>
         </form>
         {Scene && Source && (
