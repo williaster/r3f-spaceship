@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, useHelper } from '@react-three/drei';
+import * as THREE from 'three';
 import { Leva, useControls } from 'leva';
+import Stars from './03-stars-only';
 
 const Demo = () => (
   <>
@@ -16,32 +18,25 @@ const Scene = () => {
   const { background } = useControls({
     background: '#b483b4',
   });
+
   return (
     <>
       <color attach="background" args={[background]} />
       <OrbitControls />
       <ambientLight intensity={0.5} />
-      <pointLight
-        color="#0ff"
-        position={[-3, 3, 0]} // x,y,z
-      />
       <Rocket />
+      <Stars />
     </>
   );
 };
 
-const Rocket = () => {
-  const { wireframe } = useControls({
-    wireframe: false,
-  });
-  return (
-    <mesh>
-      <coneGeometry
-        args={[0.75, 2, 30]} // [radius, height, numSegments]
-      />
-      <meshStandardMaterial wireframe={wireframe} color="#ff8474" />
-    </mesh>
-  );
-};
+const Rocket = () => (
+  <mesh>
+    <coneGeometry
+      args={[0.75, 2, 30]} // [radius, height, numSegments]
+    />
+    <meshStandardMaterial color="#ff8474" />
+  </mesh>
+);
 
 export default Demo;

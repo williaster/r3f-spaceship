@@ -32,7 +32,7 @@ const Home: NextPage = () => {
               <p>3D in React with @react-three/fiber</p>
             </a>
 
-            <a href="/02_r3f" className={styles.card}>
+            <a href="/03_stars" className={styles.card}>
               <h2>03. 💫 &rarr;</h2>
               <p>Animate stars in our scene</p>
             </a>
