@@ -6,8 +6,8 @@ import { useControls } from 'leva';
 const Stars = ({ speed = 1 }) => {
   // tuning variables
   const { starCount, starColor, starSpread, wrapDistance } = useControls({
-    starColor: '#de6363',
-    starCount: { value: 400, min: 0, max: 1000, step: 1 },
+    starColor: '#db2438',
+    starCount: { value: 500, min: 0, max: 1000, step: 1 },
     starSpread: { value: 30, min: 1, max: 100, step: 1 },
     wrapDistance: { value: 70, min: 20, max: 100, step: 1 },
   });

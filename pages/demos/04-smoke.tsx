@@ -10,13 +10,13 @@ const Demo = ({ showControls = true }) => (
     <Canvas camera={{ position: [0, 0, -15] }}>
       <Scene />
     </Canvas>
-    <Leva hidden={!showControls} titleBar={false} />
+    <Leva hidden={!showControls} />
   </>
 );
 
 const Scene = () => {
   const { background, speed } = useControls({
-    background: '#2a2f76',
+    background: '#311212',
     speed: { value: 30, min: 0, max: 200 },
   });
 

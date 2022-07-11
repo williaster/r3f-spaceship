@@ -1,17 +1,16 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Canvas, useFrame } from '@react-three/fiber';
-import * as THREE from 'three';
-import { OrbitControls } from '@react-three/drei';
 import styles from '../styles/r3f.module.css';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import Demo from './demos/01';
 
 const ThreeDConcepts: NextPage = () => {
-  const [showAmbient, setShowAmbient] = useState(true);
-  const [showPoint, setShowPoint] = useState(true);
+  const [showAxes, setShowAxes] = useState(false);
+  const [showCamera, setShowCamera] = useState(false);
+  const [showAmbient, setShowAmbient] = useState(false);
+  const [showPoint, setShowPoint] = useState(false);
   const [showBoxes, setShowBoxes] = useState(false);
-  const [showMaterials, setShowMaterials] = useState(true);
+  const [showMaterials, setShowMaterials] = useState(false);
   return (
     <div className={styles.container}>
       <Head>
@@ -22,8 +21,41 @@ const ThreeDConcepts: NextPage = () => {
         <h3>A 3D Scene 🕶</h3>
 
         <ul>
-          <li>Cartesian 3D space</li>
-          <li>Perspective Camera (position, near/far)</li>
+          <li>
+            Cartesian 3D space{' '}
+            <input
+              type="checkbox"
+              checked={showAxes}
+              onChange={() => setShowAxes(!showAxes)}
+            />
+          </li>
+          <li>
+            Perspective Camera (position, near/far){' '}
+            <input
+              type="checkbox"
+              checked={showCamera}
+              onChange={() => setShowCamera(!showCamera)}
+            />
+          </li>
+          <li>
+            Objects{' '}
+            <input
+              type="checkbox"
+              checked={showBoxes}
+              onChange={() => setShowBoxes(!showBoxes)}
+            />
+            <ul>
+              <li>Mesh (points and edges)</li>
+              <li>
+                Materials (color, shiny/rough, texture){' '}
+                <input
+                  type="checkbox"
+                  checked={showMaterials}
+                  onChange={() => setShowMaterials(!showMaterials)}
+                />
+              </li>
+            </ul>
+          </li>
           <li>
             Lights
             <ul>
@@ -47,31 +79,14 @@ const ThreeDConcepts: NextPage = () => {
               <li>Spotlight (single point, single directional cone)</li>
             </ul>
           </li>
-          <li>
-            Objects{' '}
-            <input
-              type="checkbox"
-              checked={showBoxes}
-              onChange={() => setShowBoxes(!showBoxes)}
-            />
-            <ul>
-              <li>Mesh (points and edges)</li>
-              <li>
-                Materials (color, shiny/rough, texture){' '}
-                <input
-                  type="checkbox"
-                  checked={showMaterials}
-                  onChange={() => setShowMaterials(!showMaterials)}
-                />
-              </li>
-            </ul>
-          </li>
         </ul>
         <Demo
           showAmbient={showAmbient}
           showBoxes={showBoxes}
           showPoint={showPoint}
           showMaterials={showMaterials}
+          showCamera={showCamera}
+          showAxes={showAxes}
         />
       </main>
     </div>

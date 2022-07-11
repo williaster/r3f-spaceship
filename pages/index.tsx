@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import Demo from './demos/04-smoke';
+import Demo from './demos/04-smoke-with-effects';
 
 const Home: NextPage = () => {
   return (

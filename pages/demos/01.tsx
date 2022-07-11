@@ -1,33 +1,76 @@
 import React, { useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, useHelper } from '@react-three/drei';
 import * as THREE from 'three';
 
-const Demo = ({
-  showAmbient = true,
-  showPoint = true,
-  showBoxes = true,
-  showMaterials = true,
-}) => (
-  <Canvas style={{ background: '#eee', height: 600 }}>
-    <OrbitControls />
-    <axesHelper />
-    {showAmbient && <ambientLight />}
-    {showPoint && <pointLight position={[10, 10, 10]} />}
-    {showBoxes && (
-      <>
-        <Box
-          wireframe={!showMaterials}
-          position={[-1.2, 0, 1]}
-          rotation={-0.01}
-        />
-        <Box wireframe={!showMaterials} position={[1.2, 0, 1]} />
-        <Box wireframe scale={1.05} position={[1.2, 0, 1]} />
-      </>
-    )}
-    <Plane wireframe={!showMaterials} rotation={[0, Math.PI, 0]} />
+const Demo = (props: React.Props<typeof Scene>) => (
+  <Canvas shadows style={{ background: '#0a5c5b', height: 600 }}>
+    <Scene {...props} />
   </Canvas>
 );
+
+const Scene = ({
+  showAmbient = true,
+  showAxes = true,
+  showPoint = true,
+  showBoxes = true,
+  showCamera = true,
+  showMaterials = true,
+}) => {
+  const pointRef = useRef<THREE.PointLight>();
+  useHelper(showPoint && pointRef, THREE.PointLightHelper, 0.5);
+  useFrame(({ clock }) => {
+    if (pointRef.current) {
+      pointRef.current.position.x = Math.sin(clock.elapsedTime) * Math.PI;
+      pointRef.current.position.y = Math.cos(clock.elapsedTime) * Math.PI;
+    }
+  });
+  return (
+    <>
+      <OrbitControls />
+      {showAxes && <axesHelper />}
+      {showCamera && <Camera />}
+      {showAmbient && <ambientLight intensity={0.2} />}
+      {showPoint && (
+        <pointLight
+          ref={pointRef}
+          castShadow
+          intensity={0.5}
+          position={[2, 2, 2]}
+          shadow-mapSize-height={1024}
+          shadow-mapSize-width={1024}
+          shadow-camera-far={50}
+          shadow-camera-left={-10}
+          shadow-camera-right={10}
+          shadow-camera-top={10}
+          shadow-camera-bottom={-10}
+        />
+      )}
+      {showBoxes && (
+        <>
+          <Box
+            castShadow
+            wireframe={!showMaterials}
+            position={[-1.2, 0, 1]}
+            rotation={-0.01}
+          />
+          <Box
+            wireframe={!showMaterials}
+            castShadow={false}
+            position={[1.2, 0, 1]}
+          />
+          <Box
+            wireframe
+            castShadow={false}
+            scale={1.05}
+            position={[1.2, 0, 1]}
+          />
+          <Plane wireframe={!showMaterials} rotation={[0, Math.PI, 0]} />
+        </>
+      )}
+    </>
+  );
+};
 
 const Box = ({
   rotation = 0.01,
@@ -72,14 +115,30 @@ const Plane = ({
   wireframe,
   ...props
 }: Partial<JSX.IntrinsicElements['mesh']> & { wireframe?: boolean }) => (
-  <mesh {...props} position={[0, 0, -0.01]}>
-    <planeGeometry args={[40, 20, 10, 10]} />
+  <mesh {...props} receiveShadow position={[0, 0, -0.01]}>
+    <planeGeometry args={[10, 10, 10, 10]} />
     <meshStandardMaterial
       wireframe={wireframe}
-      color="#333"
+      color="#3ae8ce"
       side={THREE.DoubleSide}
     />
   </mesh>
 );
+
+const Camera = () => {
+  const camera = React.useRef<THREE.PerspectiveCamera>();
+  useHelper(camera, THREE.CameraHelper);
+  return (
+    <perspectiveCamera
+      makeDefault={false}
+      position={[0, 0, 5]}
+      near={1}
+      far={5.2}
+      ref={camera}
+    >
+      <meshBasicMaterial />
+    </perspectiveCamera>
+  );
+};
 
 export default Demo;

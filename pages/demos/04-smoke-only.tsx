@@ -17,8 +17,8 @@ const RocketSmoke = ({ speed = 100, particleSize = 0.1 }) => {
     smokeDensity: { value: 485, min: 0, max: 1000, step: 1 },
     smokeSpread: { value: 3, min: 0, max: 10, step: 0.5 },
     smokeLength: { value: 15, min: 10, max: 100, step: 1 },
-    smokeColor: '#72f3ff',
-    smokeOpacity: { value: 0.5, min: 0, max: 1, step: 0.05 },
+    smokeColor: '#4ce5df',
+    smokeOpacity: { value: 0.25, min: 0, max: 1, step: 0.05 },
     smokeSize: { value: 5, min: 1, max: 100, step: 1 },
     smokeGrowthRate: { value: 0.5, min: 0.1, max: 1.5, step: 0.05 },
   });

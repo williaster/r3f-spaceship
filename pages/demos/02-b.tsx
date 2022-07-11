@@ -8,7 +8,7 @@ const Demo = () => (
     <Canvas>
       <Scene />
     </Canvas>
-    <Leva titleBar={false} />
+    <Leva />
   </>
 );
 

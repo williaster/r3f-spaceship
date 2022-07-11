@@ -9,13 +9,13 @@ const Demo = () => (
     <Canvas>
       <Scene />
     </Canvas>
-    <Leva titleBar={false} />
+    <Leva />
   </>
 );
 
 const Scene = () => {
   const { background } = useControls({
-    background: '#b483b4',
+    background: '#312331',
   });
 
   return (
