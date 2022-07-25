@@ -43,12 +43,7 @@ const ThreeDConcepts: NextPage = () => {
               width={240}
               height={220}
             />
-            <img
-              src={`${basePath}/mesh.png"`}
-              alt=""
-              width={210}
-              height={180}
-            />
+            <img src={`${basePath}/mesh.png`} alt="" width={210} height={180} />
             <img
               src={`${basePath}/materials.png`}
               alt=""
