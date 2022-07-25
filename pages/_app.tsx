@@ -1,8 +1,6 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import '../styles/globals.css';
+import dynamic from 'next/dynamic';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
-}
+const NoSSRApp = dynamic(() => import('./__app'), { ssr: false });
 
-export default MyApp
+export default NoSSRApp;
