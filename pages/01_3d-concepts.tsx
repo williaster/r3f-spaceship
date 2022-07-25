@@ -4,6 +4,8 @@ import styles from '../styles/r3f.module.css';
 import React, { useState } from 'react';
 import Demo from './demos/01';
 
+const basePath = process.env.NODE_ENV === 'production' ? '/r3f-spaceship' : '';
+
 const ThreeDConcepts: NextPage = () => {
   const [showDemo, setShowDemo] = useState(false);
   const [showAxes, setShowAxes] = useState(false);
@@ -29,11 +31,36 @@ const ThreeDConcepts: NextPage = () => {
         />
         {!showDemo && (
           <div className={styles.flex}>
-            <img src="/cartesian.png" alt="" width={150} height={130} />
-            <img src="/camera.jpeg" alt="" width={240} height={220} />
-            <img src="/mesh.png" alt="" width={210} height={180} />
-            <img src="/materials.png" alt="" width={350} height={110} />
-            <img src="/lights.jpeg" alt="" width={300} height={220} />
+            <img
+              src={`${basePath}/cartesian.png`}
+              alt=""
+              width={150}
+              height={130}
+            />
+            <img
+              src={`${basePath}/camera.jpeg`}
+              alt=""
+              width={240}
+              height={220}
+            />
+            <img
+              src={`${basePath}/mesh.png"`}
+              alt=""
+              width={210}
+              height={180}
+            />
+            <img
+              src={`${basePath}/materials.png`}
+              alt=""
+              width={350}
+              height={110}
+            />
+            <img
+              src={`${basePath}/lights.jpeg`}
+              alt=""
+              width={300}
+              height={220}
+            />
           </div>
         )}
         <ul>
