@@ -3,23 +3,15 @@ import { Canvas } from '@react-three/fiber';
 
 const Demo = () => (
   <Canvas>
-    <Scene />
+    <color attach="background" args={['#b483b4']} />
+    <ambientLight intensity={0.5} />
+    <pointLight
+      color="#0ff"
+      position={[3, 10, 0]} // x,y,z
+    />
+    <Rocket />
   </Canvas>
 );
-
-const Scene = () => {
-  return (
-    <>
-      <color attach="background" args={['#b483b4']} />
-      <ambientLight intensity={0.5} />
-      <pointLight
-        color="#0ff"
-        position={[3, 10, 0]} // x,y,z
-      />
-      <Rocket />
-    </>
-  );
-};
 
 const Rocket = () => (
   <mesh>

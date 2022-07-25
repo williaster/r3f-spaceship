@@ -8,6 +8,7 @@ import styles from '../styles/r3f.module.css';
 import Demo from './demos/02';
 import Demo2 from './demos/02-b';
 import DemoSource from '!!raw-loader!./demos/02';
+import DemoThreeSource from '!!raw-loader!./demos/02-three';
 import DemoSource2 from '!!raw-loader!./demos/02-b';
 
 const ThreeDConcepts: NextPage = () => {
@@ -100,7 +101,20 @@ const ThreeDConcepts: NextPage = () => {
               >
                 {showDemo ? DemoSource : DemoSource2}
               </SyntaxHighlighter>
+
+              <br />
+              <br />
+              {showDemo && (
+                <SyntaxHighlighter
+                  language="typescript"
+                  style={syntaxStyle}
+                  customStyle={{ fontSize: '1.2em' }}
+                >
+                  {DemoThreeSource}
+                </SyntaxHighlighter>
+              )}
             </div>
+
             <div className={styles.scene}>
               {showDemo ? <Demo /> : <Demo2 />}
             </div>

@@ -16,6 +16,7 @@ const Scene = ({
   showBoxes = true,
   showCamera = true,
   showMaterials = true,
+  showMeshNormal = true,
 }) => {
   const pointRef = useRef<THREE.PointLight>();
   useHelper(showPoint && pointRef, THREE.PointLightHelper, 0.5);
@@ -56,6 +57,7 @@ const Scene = ({
           />
           <Box
             wireframe={!showMaterials}
+            normals={showMeshNormal}
             castShadow={false}
             position={[1.2, 0, 1]}
           />
@@ -75,9 +77,11 @@ const Scene = ({
 const Box = ({
   rotation = 0.01,
   wireframe,
+  normals,
   ...props
 }: Partial<JSX.IntrinsicElements['mesh']> & {
   rotation?: number;
+  normals?: number;
   wireframe?: boolean;
 }) => {
   // This reference gives us direct access to the THREE.Mesh object
@@ -103,10 +107,17 @@ const Box = ({
       onPointerOut={() => hover(false)}
     >
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial
-        wireframe={wireframe}
-        color={wireframe ? '#000' : hovered ? 'hotpink' : 'orange'}
-      />
+      {normals ? (
+        <meshNormalMaterial
+          wireframe={wireframe}
+          color={wireframe ? '#000' : hovered ? 'hotpink' : 'orange'}
+        />
+      ) : (
+        <meshStandardMaterial
+          wireframe={wireframe}
+          color={wireframe ? '#000' : hovered ? 'hotpink' : 'orange'}
+        />
+      )}
     </mesh>
   );
 };
@@ -121,6 +132,8 @@ const Plane = ({
       wireframe={wireframe}
       color="#3ae8ce"
       side={THREE.DoubleSide}
+      metalness={0.5}
+      roughness={0.15}
     />
   </mesh>
 );

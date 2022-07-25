@@ -49,3 +49,21 @@
 .scene canvas {
   min-height: calc(100vh - 200px);
 }
+
+.scene__full_width {
+  width: 100%;
+  flex-grow: 1;
+}
+
+.scene__full_width canvas {
+  min-height: calc(100vh - 200px);
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  column-gap: 16px;
+  align-items: center;
+  justify-content: center;
+}

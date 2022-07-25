@@ -17,7 +17,7 @@ const Demo = ({ showControls = true }) => (
 const Scene = () => {
   const { background, speed } = useControls({
     background: '#311212',
-    speed: { value: 30, min: 0, max: 200 },
+    speed: { value: 0, min: 0, max: 200 },
   });
 
   return (
