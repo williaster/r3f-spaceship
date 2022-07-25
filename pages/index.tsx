@@ -3,6 +3,8 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Demo from './demos/04-smoke-with-effects';
 
+const basePath = process.env.NODE_ENV === 'production' ? '/r3f-spaceship' : '';
+
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
@@ -23,22 +25,22 @@ const Home: NextPage = () => {
         </p>
 
         <div className={styles.row}>
-          <a href="/01_3d-concepts" className={styles.card}>
+          <a href={`${basePath}/01_3d-concepts`} className={styles.card}>
             <h2>01. 🤓 &rarr;</h2>
             <p>Basic 3D programming concepts.</p>
           </a>
 
-          <a href="/02_r3f" className={styles.card}>
+          <a href={`${basePath}/02_r3f`} className={styles.card}>
             <h2>02. 🚀 &rarr;</h2>
             <p>3D in React with @react-three/fiber</p>
           </a>
 
-          <a href="/03_stars" className={styles.card}>
+          <a href={`${basePath}/03_stars`} className={styles.card}>
             <h2>03. 💫 &rarr;</h2>
             <p>Animate stars in our scene</p>
           </a>
 
-          <a href="/04_smoke" className={styles.card}>
+          <a href={`${basePath}/04_smoke`} className={styles.card}>
             <h2>04. 💨 &rarr;</h2>
             <p>Add particle smoke to our rocket</p>
           </a>

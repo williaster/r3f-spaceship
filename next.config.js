@@ -7,6 +7,7 @@ const nextConfig = {
     // your project has type errors.
     ignoreBuildErrors: true,
   },
+  basePath: process.env.NODE_ENV === 'production' ? '/r3f-spaceship' : '',
 };
 
 module.exports = nextConfig;

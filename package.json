@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "preview": "yarn build && cd ./out && npx serve",
-    "deploy": "rm -rf out && yarn build && cd out && touch .nojekyll && git init && git add . && git commit -m \"Deploy commit\" && git remote add origin git@github.com:williaster/r3f-spaceship.git && git push -f origin main:gh-pages"
+    "deploy": "rm -rf out && yarn build && cd out && touch .nojekyll && git init && git add . && git commit -m \"Deploy commit\" && git remote add origin git@github.com:williaster/r3f-spaceship.git && git push -fu origin HEAD:gh-pages"
   },
   "author": "Christopher Card Williams <williaster@gmail.com>",
   "license": "MIT",
